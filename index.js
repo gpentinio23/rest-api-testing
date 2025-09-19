@@ -1,17 +1,18 @@
 // JavaScript source code
 'use strict';
 
+
 const Hapi = require('@hapi/hapi');
 const Joi = require('@hapi/joi')
 const path = require('path')
 const fs = require('fs')
+const coursesRoutes = require('./routes/courses')
 
 const routes = []
 const routesPath = path.join(__dirname, "routes")
 fs.readdirSync(routesPath).forEach((file) => {
     if (file !== "index.js") {
-        const variable2 = require(path.join(routesPath, file))
-        routes.push(...variable2)
+        routes.push(...require(path.join(routesPath, file)))
     }
 })
 

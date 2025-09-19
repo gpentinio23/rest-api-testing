@@ -1,20 +1,14 @@
-const Joi = require('@hapi/joi')
+const fs = require("fs").promises
+const path = require("path")
 
-module.exports = [
-    {
-        method: "GET",
-        path: "/courses/{subject}",
-        handler: (request, h) => {
-            const subject = request.params.subject
-            return subject
-        }
-    },
-    {
-        method: "GET",
-        path: "/courses/credits/{number}",
-        handler: (request, h) => {
-            const number = request.params.number
-            return number
-        }
+class Courses {
+    async find(criteria = () => true) {
+        const coursesPath = path.join(__dirname, "courses.json")
+        const contents = await fs.readfile(coursesPath)
+        return JSON.parse(contents).filter(criteria)
+
     }
-]
+
+}
+
+module.exports = new Courses()
