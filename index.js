@@ -23,11 +23,13 @@ const init = async () => {
         host: 'localhost'
     });
 
-    server.route(routes)
+    server.route(coursesRoutes)
    
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
+
+
 };
 
 process.on('unhandledRejection', (err) => {
