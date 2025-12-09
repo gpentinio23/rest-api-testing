@@ -2,13 +2,11 @@
 const CourseServices = require('../services/courses')
 
 class CourseController {
-    async getCoursesBySubject(request) {
-        const { subjectCode } = request.params
+    async getCoursesBySubject({ params: { subjectCode } }) {
         const sCode = await CourseServices.getCoursesBySubject(subjectCode)
         return JSON.stringify(sCode)
     }
-    async getGenEdCoursesByCategory(request) {
-        const { category } = request.params
+    async getGenEdCoursesByCategory({ params: { category } }) {
         const cCode = await CourseServices.getCoursesByGenedCategory(category)
         return JSON.stringify(cCode)
     }
