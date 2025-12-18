@@ -16,7 +16,7 @@ module.exports = [
                 })
             },
         },
-        handler: MenuController.getMenu,
+       // handler: MenuController.getMenu,
         handler: async (request, h) => {
             const data = await MenuController.getMenu(request, h)
             return {
@@ -43,7 +43,7 @@ module.exports = [
                 })
             }
         },
-        handler: MenuController.addItem,
+       // handler: MenuController.addItem,
         handler: async (request, h) => {
             const user = request.auth.credentials
             const result = await MenuController.addItem(request, h)
@@ -67,7 +67,7 @@ module.exports = [
                 })
             }
         },
-        handler: MenuController.removeItem,
+       // handler: MenuController.removeItem,
         handler: async (request, h) => {
             const user = request.auth.credentials
             const { id } = request.params
@@ -95,7 +95,7 @@ module.exports = [
                 })
             }
         },
-        handler: MenuController.updateItem,
+       // handler: MenuController.updateItem,
         handler: async (request, h) => {
             const user = request.auth.credential
             const { id } = request.params
